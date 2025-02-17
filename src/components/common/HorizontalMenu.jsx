@@ -6,9 +6,10 @@ function HorizontalMenu() {
     return(
         <div className="horizontalMenu">
             <div className="horizontalMenu_container">
-                <NavLink to="/" title="Homepage">Homepage</NavLink>
+                <NavLink to="/dashboard" title="Dashboard">Dashboard</NavLink>
                 <NavLink to="/projects" title="Projects">Projects</NavLink>
                 <NavLink to="/settings" title="Settings">Settings</NavLink>
+                <NavLink to="/logout" title="Logout">Logout</NavLink>
             </div>
         </div>
     );
