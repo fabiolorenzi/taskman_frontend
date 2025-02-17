@@ -23,7 +23,7 @@
     text-align: center;
     h1 {
         font-size: $gg-font-size;
-        color: $light-font;
+        color: $darker-font;
         @media (max-width: $md-screen) {
             font-size: $xxl-font-size;
         }
