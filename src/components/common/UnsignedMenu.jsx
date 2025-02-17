@@ -7,7 +7,7 @@ function UnsignedMenu() {
         <div className="unsignedMenu">
             <div className="unsignedMenu_container">
                 <NavLink to="/" title="Homepage">Homepage</NavLink>
-                <NavLink to="/signin" title="Signin">Signin</NavLink>
+                <NavLink to="/signin" title="Sign in">Sign in</NavLink>
                 <NavLink to="/login" title="Login">Login</NavLink>
             </div>
         </div>
