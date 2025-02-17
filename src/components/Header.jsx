@@ -1,13 +1,20 @@
 import React from "react";
-import HorizontalMenu from "./common/HorizontalMenu.jsx"
+import HorizontalMenu from "./common/HorizontalMenu.jsx";
+import UnsignedMenu from "./common/UnsignedMenu.jsx";
 
 import "./Header.scss";
 
 function Header() {
+    let value = false;
     return(
         <div className="header">
             <div className="header_container">
-                <HorizontalMenu />
+                {
+                    value ?
+                        <HorizontalMenu />
+                    :
+                        <UnsignedMenu />
+                }
             </div>
         </div>
     );

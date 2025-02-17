@@ -2,13 +2,13 @@
 @import "../../vars/_fontSizes.scss";
 @import "../../vars/_breakpoints.scss";
 
-.horizontalMenu {
+.unsignedMenu {
     display: flex;
     width: 100%;
     justify-content: flex-end;
 }
 
-.horizontalMenu_container {
+.unsignedMenu_container {
     display: flex;
     width: 500px;
     justify-content: space-around;
