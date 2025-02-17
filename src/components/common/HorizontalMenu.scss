@@ -1,0 +1,43 @@
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+@import "../../vars/_breakpoints.scss";
+
+.horizontalMenu {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    @media (max-width: $md-screen) {
+        display: none;
+    }
+}
+
+.horizontalMenu_container {
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+    a {
+        display: flex;
+        width: fit-content;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: $light_font;
+        transition-duration: 0.3s;
+        font-family: "Fira Code", monospace;
+        font-size: $sm-font-size;
+        text-decoration: none;
+
+        &:hover {
+            color: $special-colour;
+            transition-duration: 0.3s;
+        }
+
+        svg {
+            font-size: $sm-font-size;
+            color: $special-colour;
+            margin-right: 10px;
+            margin-bottom: 3px;
+        }
+    }
+}
