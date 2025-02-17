@@ -27,12 +27,17 @@ function Signin() {
 
     useEffect(() => {
         if (result) {
-            if (result.email) {
-                alert("Login successfully");
-                sessionStorage.setItem("passcode", result.passcode);
-                navigate("/dashboard");
+            if (result?.data) {
+                alert("User created successfully");
+                navigate("/signin");
+                setUserData({
+                    name: "",
+                    surname: "",
+                    email: "",
+                    password: ""
+                });
             } else {
-                alert("Login failed, please try again");
+                alert("Creation failed, please try again");
             };
         };
         // eslint-disable-next-line
@@ -61,7 +66,7 @@ function Signin() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch("http://localhost:8000/api/users", {
+        fetch("http://127.0.0.1:8000/api/v1/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

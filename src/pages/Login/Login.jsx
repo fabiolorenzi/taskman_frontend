@@ -17,7 +17,7 @@ function Login() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (sessionStorage.getItem("passcode")) {
+        if (localStorage.getItem("passcode")) {
             navigate("/dashboard");
         };
         // eslint-disable-next-line
@@ -25,9 +25,9 @@ function Login() {
 
     useEffect(() => {
         if (result) {
-            if (result.email) {
+            if (result?.data) {
                 alert("Login successfully");
-                sessionStorage.setItem("passcode", result.passcode);
+                localStorage.setItem("passcode", result.data.passcode);
                 navigate("/dashboard");
             } else {
                 alert("Login failed, please try again");
@@ -57,7 +57,7 @@ function Login() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch("http://localhost:8000/api/users/login", {
+        fetch("http://127.0.0.1:8000/api/v1/sessions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
