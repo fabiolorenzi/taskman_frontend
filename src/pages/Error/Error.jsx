@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 import "./Error.scss";
 
-import ButtonLink from "../../components/ButtonLink.jsx";
+import ButtonLink from "../../components/common/ButtonLink.jsx";
 
 function Error() {
     useEffect(() => {
