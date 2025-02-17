@@ -1,0 +1,20 @@
+@import "../vars/_colours.scss";
+
+.header {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: $dark-menu;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    backdrop-filter: blur(10px);
+    z-index: 25;
+}
+
+.header_container {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    position: relative;
+}

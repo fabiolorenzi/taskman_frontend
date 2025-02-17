@@ -1,0 +1,31 @@
+@import "./_colours.scss";
+@import "./_fontSizes.scss";
+@import "./_breakpoints.scss";
+
+@mixin pages($background-color) {
+    display: block;
+    background-color: $background-color;
+    padding-top: 200px;
+    min-height: calc(100vh - 250px);
+    @media (max-width: $md-screen) {
+        padding-top: 150px;
+    }
+}
+
+@mixin pageContainer {
+    display: block;
+    width: 100%;
+}
+
+@mixin pageTitle {
+    display: block;
+    width: 100%;
+    text-align: center;
+    h1 {
+        font-size: $gg-font-size;
+        color: $light-font;
+        @media (max-width: $md-screen) {
+            font-size: $xxl-font-size;
+        }
+    }
+}

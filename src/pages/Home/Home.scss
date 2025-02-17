@@ -1,0 +1,28 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_breakpoints.scss";
+@import "../../vars/_fontSizes.scss";
+
+.home {
+    @include pages($background-colour);
+    padding-bottom: 200px;
+    @media (max-width: $md-screen) {
+        padding-bottom: 0;
+    }
+}
+
+.home_container {
+    @include pageContainer;
+    .home_body {
+        display: block;
+        width: 900px;
+        margin: 100px auto 0;
+        @media (max-width: $xl-screen) {
+            width: 630px;
+        }
+        @media (max-width: $md-screen) {
+            margin: 0 auto;
+            width: 95%;
+        }
+    }
+}

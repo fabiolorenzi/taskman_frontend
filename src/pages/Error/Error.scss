@@ -1,0 +1,45 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.errorPage {
+    @include pages($background-colour);
+}
+
+.errorPage_container {
+    @include pageContainer;
+    .errorPage_title {
+        @include pageTitle;
+    }
+    .errorPage_text {
+        display: block;
+        width: 900px;
+        margin: 100px auto 0;
+        text-align: center;
+        @media (max-width: $xl-screen) {
+            width: 630px;
+        }
+        @media (max-width: $md-screen) {
+            margin: 0 auto;
+            width: 95%;
+        }
+        p {
+            font-size: $lg-font-size;
+            font-weight: 400;
+            color: $darker-font;
+            @media (max-width: $md-screen) {
+                font-size: $md-font-size;
+                margin-top: 50px;
+            }
+        }
+    }
+    .errorPage_buttonSection {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 100px;
+        @media (max-width: $md-screen) {
+            margin-bottom: 150px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@import "../vars/_colours.scss";
+@import "../vars/_fontSizes.scss";
+
+.footer {
+    display: flex;
+    width: 100%;
+    background-color: $dark-menu;
+    padding: 50px 0;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    position: relative;
+    a {
+        font-size: $sm-font-size;
+        color: $darker-font;
+        transition-duration: 0.3s;
+        margin-left: 3%;
+        text-decoration: none;
+        &:hover {
+            color: $special-colour;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
+    }
+    svg {
+        font-size: $sm-font-size;
+        color: $darker-font;
+        transition-duration: 0.3s;
+        margin-right: 30px;
+        &:hover {
+            color: $special-colour;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
+    }
+}

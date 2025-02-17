@@ -1,0 +1,33 @@
+@import "../vars/_colours.scss";
+@import "../vars/_fontSizes.scss";
+
+.buttonLink {
+    display: block;
+    width: 92px;
+    color: $light-font;
+    font-size: $md-font-size;
+    font-weight: 600;
+    border: 1px solid $menu-colour;
+    border-radius: 4px;
+    padding: 3px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    transition-duration: 0.3s;
+    &:hover {
+        background-color: $light-font;
+        color: $menu-colour;
+        transition-duration: 0.3s;
+        cursor: pointer;
+    }
+}
+
+.normal {
+    background-color: $menu-colour;
+    transition-duration: 0.3s;
+}
+
+.warning {
+    background-color: $warning-colour;
+    transition-duration: 0.3s;
+}
