@@ -17,18 +17,18 @@ function Login() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (sessionStorage.getItem("passKey") === process.env.REACT_APP_PASSKEY) {
-            navigate("/setup");
+        if (sessionStorage.getItem("passcode")) {
+            navigate("/dashboard");
         };
         // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
         if (result) {
-            if (result.username) {
+            if (result.email) {
                 alert("Login successfully");
-                sessionStorage.setItem("passKey", process.env.REACT_APP_PASSKEY);
-                navigate("/setup");
+                sessionStorage.setItem("passcode", result.passcode);
+                navigate("/dashboard");
             } else {
                 alert("Login failed, please try again");
             };
@@ -57,14 +57,14 @@ function Login() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch(`${process.env.REACT_APP_API}/api/accounts/login`, {
+        fetch("http://localhost:8000/api/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                "username": loginData.email,
+                "email": loginData.email,
                 "password": loginData.password
             })
         })
