@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
+import Signin from "./pages/Signin/Signin.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -14,6 +15,7 @@ function App() {
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signin" element={<Signin />} />
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />

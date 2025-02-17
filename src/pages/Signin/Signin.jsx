@@ -4,10 +4,12 @@ import { Helmet } from "react-helmet";
 
 import Button from "../../components/common/Button.jsx";
 
-import "./Login.scss";
+import "./Signin.scss";
 
-function Login() {
-    const [loginData, setLoginData] = useState({
+function Signin() {
+    const [userData, setUserData] = useState({
+        name: "",
+        surname: "",
         email: "",
         password: ""
     });
@@ -38,7 +40,7 @@ function Login() {
 
     const handleChange = e => {
         e.preventDefault();
-        setLoginData({...loginData, [e.target.name]: e.target.value});
+        setUserData({...userData, [e.target.name]: e.target.value});
     };
 
     const handleKey = e => {
@@ -49,7 +51,9 @@ function Login() {
 
     const cancelButton = e => {
         e.preventDefault();
-        setLoginData({
+        setUserData({
+            name: "",
+            surname: "",
             email: "",
             password: ""
         });
@@ -57,15 +61,17 @@ function Login() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch("http://localhost:8000/api/users/login", {
+        fetch("http://localhost:8000/api/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                "email": loginData.email,
-                "password": loginData.password
+                "name": userData.name,
+                "surname": userData.surname,
+                "email": userData.email,
+                "password": userData.password
             })
         })
         .then(resp => resp.json())
@@ -77,31 +83,53 @@ function Login() {
     };
 
     return(
-        <div className="loginPage">
+        <div className="signinPage">
             <Helmet>
-                <title>Taskman | Login</title>
+                <title>Taskman | Sign in</title>
             </Helmet>
-            <div className="loginPage_container">
-                <div className="login_title">
-                    <h1>Login</h1>
+            <div className="signinPage_container">
+                <div className="signin_title">
+                    <h1>Sign in</h1>
                 </div>
-                <div className="login_body">
-                    <div className="login_inputLineFirst">
-                        <label htmlFor="email">Email</label>
+                <div className="signin_body">
+                    <div className="signin_inputLineFirst">
+                        <label htmlFor="name">Name</label>
                         <input
                             type="text"
-                            name="email"
-                            value={loginData.email}
+                            name="name"
+                            value={userData.name}
                             onChange={handleChange}
                             autoComplete="off"
                             onKeyDown={e => handleKey(e)}
                         />
                     </div>
-                    <div className="login_inputLineSecond">
+                    <div className="signin_inputLineFirst">
+                        <label htmlFor="surname">Surname</label>
+                        <input
+                            type="text"
+                            name="surname"
+                            value={userData.surname}
+                            onChange={handleChange}
+                            autoComplete="off"
+                            onKeyDown={e => handleKey(e)}
+                        />
+                    </div>
+                    <div className="signin_inputLineFirst">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="text"
+                            name="email"
+                            value={userData.email}
+                            onChange={handleChange}
+                            autoComplete="off"
+                            onKeyDown={e => handleKey(e)}
+                        />
+                    </div>
+                    <div className="signin_inputLineSecond">
                         <label htmlFor="password">Password</label>
                         <div>
                             <input
-                                type={showPassword ? "text" : "password"} name="password" value={loginData.password}
+                                type={showPassword ? "text" : "password"} name="password" value={userData.password}
                                 onChange={handleChange}
                                 autoComplete="off"
                                 onKeyDown={e => handleKey(e)}
@@ -109,17 +137,17 @@ function Login() {
                             <button onClick={() => setShowPassword(!showPassword)}>Show</button>
                         </div>
                     </div>
-                    <div className="login_inputLineThird">
+                    <div className="signin_inputLineThird">
                         <Button func={cancelButton} text="Cancel" isCancel />
                         <Button func={submitButton} text="Submit" isSubmit />
                     </div>
                 </div>
-                <div className="login_linkSection">
-                    <p>If you don't have an accout, please <NavLink to="/signin" className="login_link">Sign in</NavLink></p>
+                <div className="signin_linkSection">
+                    <p>If you already have an accout, please <NavLink to="/login" className="login_link">Login</NavLink></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Signin;

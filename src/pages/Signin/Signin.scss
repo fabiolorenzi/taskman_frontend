@@ -1,0 +1,86 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.signinPage {
+    @include pages($background-colour);
+}
+
+.signinPage_container {
+    @include pageContainer;
+    .signin_title {
+        @include pageTitle;
+    }
+    .signin_body {
+        display: block;
+        width: 320px;
+        background-color: $menu-colour;
+        margin: auto;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -10px $shadow-colour;
+        .signin_inputLineFirst {
+            display: flex;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            label {
+                color: $light-font;
+                font-size: $md-font-size;
+            }
+            input {
+                width: 200px;
+            }
+        }
+        .signin_inputLineSecond {
+            display: flex;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            label {
+                color: $light-font;
+                font-size: $md-font-size;
+            }
+            input {
+                width: 140px;
+            }
+            button {
+                width: 60px;
+                background-color: $darker-font;
+                color: $background-colour;
+                font-weight: 600;
+                border: 1px solid $background-colour;
+                padding: 2px 0;
+            }
+        }
+        .signin_inputLineThird {
+            display: flex;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    .signin_linkSection {
+        text-align: center;
+        margin-top: 20px;
+        p {
+            color: $darker-font;
+            font-size: $md-font-size;
+            .login_link {
+                text-decoration: none;
+                cursor: pointer;
+                color: $menu-colour;
+                transition-duration: 0.3s;
+                &:hover {
+                    color: $special-colour;
+                    transition-duration: 0.3s;
+                }
+            }
+        }
+    }
+}
