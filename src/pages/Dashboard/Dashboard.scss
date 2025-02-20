@@ -1,0 +1,23 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.dashboard {
+    @include pages($background-colour);
+}
+
+.dashboard_container {
+    @include pageContainer;
+    .dashboard_title {
+        @include pageTitle;
+    }
+    .dashboard_body {
+        display: block;
+        width: 320px;
+        background-color: $menu-colour;
+        margin: auto;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -10px $shadow-colour;
+    }
+}

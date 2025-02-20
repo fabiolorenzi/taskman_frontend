@@ -1,16 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import HorizontalMenu from "./common/HorizontalMenu.jsx";
 import UnsignedMenu from "./common/UnsignedMenu.jsx";
 
 import "./Header.scss";
 
 function Header() {
-    let value = false;
+    const userAuthorized = useSelector(state => state.authorize);
+
     return(
         <div className="header">
             <div className="header_container">
                 {
-                    value ?
+                    userAuthorized ?
                         <HorizontalMenu />
                     :
                         <UnsignedMenu />
