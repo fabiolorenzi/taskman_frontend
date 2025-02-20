@@ -13,11 +13,9 @@
     }
     .dashboard_body {
         display: block;
-        width: 320px;
-        background-color: $menu-colour;
+        width: 100%;
+        max-width: 800px;
         margin: auto;
         padding: 20px;
-        border-radius: 4px;
-        box-shadow: 0 10px 30px -10px $shadow-colour;
     }
 }

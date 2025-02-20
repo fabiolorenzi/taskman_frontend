@@ -89,6 +89,7 @@ function Dashboard() {
                                 <h1>Dashboard</h1>
                             </div>
                             <div className="dashboard_body">
+                                <h1>Hi {user.name}, this is the Dashboard page</h1>
                             </div>
                         </Fragment>
                     : <Spinner />
