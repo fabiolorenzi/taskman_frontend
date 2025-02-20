@@ -1,0 +1,47 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.projects {
+    @include pages($background-colour);
+}
+
+.projects_container {
+    @include pageContainer;
+    .projects_title {
+        @include pageTitle;
+    }
+    .projects_body {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        .projects_bodyTitle {
+            display: block;
+            width: 100%;
+            h2 {
+                color: $darker-font;
+                font-size: $lg-font-size;
+                text-align: center;
+            }
+        }
+        .projects_newProject {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .projects_projectsList {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            h2 {
+                font-size: $lg-font-size;
+                color: $darker-font;
+                text-align: center;
+            }
+        }
+    }
+}

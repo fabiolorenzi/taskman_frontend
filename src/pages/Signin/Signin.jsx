@@ -22,7 +22,6 @@ function Signin() {
         if (sessionStorage.getItem("passcode")) {
             navigate("/dashboard");
         };
-        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -40,7 +39,6 @@ function Signin() {
                 alert("Creation failed, please try again");
             };
         };
-        // eslint-disable-next-line
     }, [result]);
 
     const handleChange = e => {

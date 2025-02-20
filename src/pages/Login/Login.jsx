@@ -20,7 +20,6 @@ function Login() {
         if (localStorage.getItem("passcode")) {
             navigate("/dashboard");
         };
-        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -33,7 +32,6 @@ function Login() {
                 alert("Login failed, please try again");
             };
         };
-        // eslint-disable-next-line
     }, [result]);
 
     const handleChange = e => {

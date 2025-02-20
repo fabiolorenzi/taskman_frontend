@@ -34,7 +34,6 @@ function Dashboard() {
             .then(data => setSession(data))
             .catch(err => console.log(err));
         };
-        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -59,7 +58,6 @@ function Dashboard() {
                 .catch(err => console.log(err));
             }
         }
-        // eslint-disable-next-line
     }, [session]);
 
     useEffect(() => {
@@ -73,7 +71,6 @@ function Dashboard() {
                 setIsLoading(false);
             }
         }
-        // eslint-disable-next-line
     }, [user]);
 
     return(

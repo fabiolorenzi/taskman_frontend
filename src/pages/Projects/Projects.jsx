@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authorize } from "../../redux/actions/authorize.js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import "./Logout.scss";
+import "./Projects.scss";
 
+import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
-function Logout() {
+function Projects() {
     const [session, setSession] = useState();
     const [user, setUser] = useState();
+    const [projects, setProjects] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -67,14 +70,14 @@ function Logout() {
                 navigate("/login");
             } else {
                 dispatch(authorize(true));
-                logout();
+                getProjects();
             }
         }
     }, [user]);
 
-    function logout() {
-        fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
-            method: "DELETE",
+    function getProjects() {
+        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -83,31 +86,57 @@ function Logout() {
                 "passcode": localStorage.getItem("passcode")
             })
         })
-        .then(resp => {
-            if (!resp.ok) {
-                throw new Error(`Error: ${resp.status} ${resp.statusText}`);
-            }
-            return resp.text().then(text => text ? JSON.parse(text) : {});
-        })
-        .then(data => {
-            alert("The user logout correctly.");
-            dispatch(authorize(false));
-            localStorage.removeItem("passcode");
-            navigate("/login");
-        })
+        .then(resp => resp.json())
+        .then(data => setProjects(data))
         .catch(err => console.log(err));
     };
 
+    useEffect(() => {
+        if (projects) {
+            if (projects.data) {
+                setIsLoading(false);
+            }
+        };
+    }, [projects]);
+
     return(
-        <div className="logout">
+        <div className="projects">
             <Helmet>
-                <title>Taskman | Logout</title>
+                <title>Taskman | Projects</title>
             </Helmet>
-            <div className="logout_container">
-                <Spinner />
+            <div className="projects_container">
+                {
+                    !isLoading ?
+                        <Fragment>
+                            <div className="projects_title">
+                                <h1>Projects</h1>
+                            </div>
+                            <div className="projects_body">
+                                <div className="projects_bodyTitle">
+                                    <h2>In here you find all the projects you are in</h2>
+                                </div>
+                                <div className="projects_newProject">
+                                    <ButtonLink
+                                        destination="/create-project"
+                                        text="Create new project"
+                                        title="Create new project"
+                                        isGoing
+                                    />
+                                </div>
+                                <div className="projects_projectsList">
+                                    {
+                                        projects.data.length > 0 ?
+                                            <h1>there are projects</h1>
+                                        : <h2>You are currently not part of any project.</h2>
+                                    }
+                                </div>
+                            </div>
+                        </Fragment>
+                    : <Spinner />
+                }
             </div>
         </div>
     );
 };
 
-export default Logout;
+export default Projects;
