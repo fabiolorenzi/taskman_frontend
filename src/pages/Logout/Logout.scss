@@ -1,0 +1,21 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.logout {
+    @include pages($background-colour);
+}
+
+.logout_container {
+    @include pageContainer;
+    .logout_title {
+        @include pageTitle;
+    }
+    .logout_body {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+    }
+}

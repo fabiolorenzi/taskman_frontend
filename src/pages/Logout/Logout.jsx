@@ -1,17 +1,16 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authorize } from "../../redux/actions/authorize.js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import "./Dashboard.scss";
+import "./Logout.scss";
 
 import Spinner from "../../components/common/Spinner.jsx";
 
-function Dashboard() {
+function Logout() {
     const [session, setSession] = useState();
     const [user, setUser] = useState();
-    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -70,33 +69,48 @@ function Dashboard() {
                 navigate("/login");
             } else {
                 dispatch(authorize(true));
-                setIsLoading(false);
+                logout();
             }
         }
         // eslint-disable-next-line
     }, [user]);
 
+    function logout() {
+        fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "passcode": localStorage.getItem("passcode")
+            })
+        })
+        .then(resp => {
+            if (!resp.ok) {
+                throw new Error(`Error: ${resp.status} ${resp.statusText}`);
+            }
+            return resp.text().then(text => text ? JSON.parse(text) : {});
+        })
+        .then(data => {
+            alert("The user logout correctly.");
+            dispatch(authorize(false));
+            localStorage.removeItem("passcode");
+            navigate("/login");
+        })
+        .catch(err => console.log(err));
+    };
+
     return(
-        <div className="dashboard">
+        <div className="logout">
             <Helmet>
-                <title>Taskman | Dashboard</title>
+                <title>Taskman | Logout</title>
             </Helmet>
-            <div className="dashboard_container">
-                {
-                    !isLoading ?
-                        <Fragment>
-                            <div className="dashboard_title">
-                                <h1>Dashboard</h1>
-                            </div>
-                            <div className="dashboard_body">
-                                <h1>Hi {user.data.name}, this is the Dashboard page</h1>
-                            </div>
-                        </Fragment>
-                    : <Spinner />
-                }
+            <div className="logout_container">
+                <Spinner />
             </div>
         </div>
     );
 };
 
-export default Dashboard;
+export default Logout;
