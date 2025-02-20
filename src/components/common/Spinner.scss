@@ -1,0 +1,26 @@
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+@import "../../vars/_breakpoints.scss";
+
+.spinner {
+    display: block;
+    width: fit-content;
+    margin: 100px auto 0;
+    animation: spinner infinite linear 2s;
+    @media (max-width: $md-screen) {
+        margin: 100px auto 0;
+    }
+    svg {
+        font-size: 200px;
+        color: $special-colour;
+        @media (max-width: $md-screen) {
+            font-size: 150px;
+        }
+    }
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
