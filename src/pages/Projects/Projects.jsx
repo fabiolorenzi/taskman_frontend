@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import "./Projects.scss";
 
+import ProjectPlaceholder from "./ProjectPlaceholder.jsx";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
@@ -126,7 +127,11 @@ function Projects() {
                                 <div className="projects_projectsList">
                                     {
                                         projects.data.length > 0 ?
-                                            <h1>there are projects</h1>
+                                            projects.data.map(proj => {
+                                                return(
+                                                    <ProjectPlaceholder project={proj} user={user} />
+                                                )
+                                            })
                                         : <h2>You are currently not part of any project.</h2>
                                     }
                                 </div>

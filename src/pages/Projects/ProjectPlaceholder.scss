@@ -1,0 +1,47 @@
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.projectPlaceholder {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: $special-colour;
+    border-radius: 4px;
+    border: 1px solid $darker-font;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover {
+        background-color: $menu-colour;
+        .projectPlaceholder_left h1,
+        .projectPlaceholder_right p {
+            color: $light-font;
+            transition-duration: 0.3s;
+        }
+        transition-duration: 0.3s;
+    }
+    .projectPlaceholder_left {
+        display: block;
+        width: 70%;
+        h1 {
+            color: $darker-font;
+            font-family: $lg-font-size;
+            margin-left: 20px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+    .projectPlaceholder_right {
+        display: block;
+        width: 30%;
+        p {
+            color: $darker-font;
+            font-family: $md-font-size;
+            font-weight: 400;
+            text-decoration: none;
+        }
+    }
+}
