@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import "./Project.scss";
 
+import ProjectData from "./ProjectData.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
 function Project() {
@@ -114,8 +115,6 @@ function Project() {
         if (project && teams) {
             if (project.data && teams.data) {
                 setIsLoading(false);
-                console.log("project: ", project.data);
-                console.log("teams: ", teams.data);
             }
         };
     }, [project, teams]);
@@ -135,6 +134,9 @@ function Project() {
                             <div className="project_body">
                                 <div className="project_bodyTitle">
                                     <h2>In here you find all the data of the project {project.data.name}</h2>
+                                </div>
+                                <div className="project_main">
+                                    <ProjectData project={project} user={user} />
                                 </div>
                             </div>
                         </Fragment>

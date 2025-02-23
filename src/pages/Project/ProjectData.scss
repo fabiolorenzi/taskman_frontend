@@ -1,0 +1,47 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.projectData {
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    background-color: $special-colour;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    .projectData_textSection {
+        display: block;
+        width: 100%;
+        .projectData_single {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            width: 100%;
+            h1 {
+                font-size: $md-font-size;
+                color: $darker-font;
+                font-weight: 500;
+                width: 25%;
+                text-align: left;
+                margin: 0;
+            }
+            p {
+                font-size: $md-font-size;
+                color: $darker-font;
+                font-weight: 400;
+                width: 75%;
+                text-align: left;
+                white-space: break-spaces;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .projectData_buttons {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
