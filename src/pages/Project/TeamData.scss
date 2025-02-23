@@ -1,0 +1,62 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.teamData {
+    display: block;
+    width: 65%;
+    max-width: 800px;
+    background-color: $special-colour;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    margin-top: 50px;
+    .teamData_title {
+        display: block;
+        width: 100%;
+        h1 {
+            color: $darker-font;
+            font-size: $lg-font-size;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 auto 20px;
+        }
+    }
+    .teamData_buttons {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .teamData_list {
+        display: block;
+        width: 100%;
+        .teamData_single {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $darker-font;
+            margin: 10px auto;
+            border-radius: 5px;
+            .teamData_singleText {
+                display: block;
+                width: 40%;
+                p {
+                    color: $light-font;
+                    font-size: $md-font-size;
+                    font-weight: 500;
+                    margin: 5px 0 5px 10px;
+                    text-align: left;
+                }
+            }
+            .teamData_singleButtons {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                align-items: center;
+                width: 60%;
+            }
+        }
+    }
+}

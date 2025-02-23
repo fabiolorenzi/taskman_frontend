@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import "./Project.scss";
 
 import ProjectData from "./ProjectData.jsx";
+import TeamData from "./TeamData.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
 function Project() {
@@ -137,6 +138,7 @@ function Project() {
                                 </div>
                                 <div className="project_main">
                                     <ProjectData project={project} user={user} />
+                                    <TeamData project={project} user={user} teams={teams} />
                                 </div>
                             </div>
                         </Fragment>

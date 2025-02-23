@@ -8,12 +8,13 @@ function ButtonLink({
     text, 
     title,
     isGoing,
-    isReturn
+    isReturn,
+    isSmall
 }) {
     return(
         <NavLink
             to={destination}
-            className={`buttonLink ${isGoing ? "normal" : ""} ${isReturn ? "warning" : ""}`}
+            className={`${isSmall ? "buttonLink_small" : "buttonLink"} ${isGoing ? "normal" : ""} ${isReturn ? "warning" : ""}`}
             title={title}
         >
             {text}

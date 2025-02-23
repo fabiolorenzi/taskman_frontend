@@ -1,11 +1,10 @@
 @import "../../vars/_colours.scss";
 @import "../../vars/_fontSizes.scss";
 
-.buttonLink {
+.buttonLink,
+.buttonLink_small {
     display: block;
-    width: 220px;
     color: $light-font;
-    font-size: $md-font-size;
     font-weight: 600;
     border: 1px solid $menu-colour;
     border-radius: 4px;
@@ -20,6 +19,16 @@
         transition-duration: 0.3s;
         cursor: pointer;
     }
+}
+
+.buttonLink {
+    width: 220px;
+    font-size: $md-font-size;
+}
+
+.buttonLink_small {
+    width: 140px;
+    font-size: $sm-font-size;
 }
 
 .normal {
