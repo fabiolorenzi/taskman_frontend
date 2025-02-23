@@ -4,17 +4,17 @@ import { authorize } from "../../redux/actions/authorize.js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import "./Projects.scss";
+import "./Project.scss";
 
-import ProjectPlaceholder from "./ProjectPlaceholder.jsx";
-import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
-function Projects() {
+function Project() {
     const [session, setSession] = useState();
     const [user, setUser] = useState();
-    const [projects, setProjects] = useState();
+    const [project, setProject] = useState();
+    const [teams, setTeams] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const projectParams = new URLSearchParams(window.location.search).get("projectId") || "";
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -72,12 +72,13 @@ function Projects() {
             } else {
                 dispatch(authorize(true));
                 getProjects();
+                getTeams();
             }
         }
     }, [user]);
 
     function getProjects() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}`, {
+        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}/${projectParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -88,52 +89,52 @@ function Projects() {
             })
         })
         .then(resp => resp.json())
-        .then(data => setProjects(data))
+        .then(data => setProject(data))
+        .catch(err => console.log(err));
+    };
+
+    function getTeams() {
+        fetch(`http://127.0.0.1:8000/api/v1/teams/${session.data.user}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "project": parseInt(projectParams),
+                "passcode": localStorage.getItem("passcode")
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => setTeams(data))
         .catch(err => console.log(err));
     };
 
     useEffect(() => {
-        if (projects) {
-            if (projects.data) {
+        if (project && teams) {
+            if (project.data && teams.data) {
                 setIsLoading(false);
+                console.log("project: ", project.data);
+                console.log("teams: ", teams.data);
             }
         };
-    }, [projects]);
+    }, [project, teams]);
 
     return(
-        <div className="projects">
+        <div className="project">
             <Helmet>
-                <title>Taskman | Projects</title>
+                <title>Taskman | {project ? project.data.name : "..."}</title>
             </Helmet>
-            <div className="projects_container">
+            <div className="project_container">
                 {
                     !isLoading ?
                         <Fragment>
-                            <div className="projects_title">
-                                <h1>Projects</h1>
+                            <div className="project_title">
+                                <h1>{project.data.name}</h1>
                             </div>
-                            <div className="projects_body">
-                                <div className="projects_bodyTitle">
-                                    <h2>In here you find all the projects you are in</h2>
-                                </div>
-                                <div className="projects_newProject">
-                                    <ButtonLink
-                                        destination="/create-project"
-                                        text="Create new project"
-                                        title="Create new project"
-                                        isGoing
-                                    />
-                                </div>
-                                <div className="projects_projectsList">
-                                    {
-                                        projects.data.length > 0 ?
-                                            projects.data.map(proj => {
-                                                return(
-                                                    <ProjectPlaceholder key={"project" + proj.id} project={proj} user={user} />
-                                                )
-                                            })
-                                        : <h2>You are currently not part of any project.</h2>
-                                    }
+                            <div className="project_body">
+                                <div className="project_bodyTitle">
+                                    <h2>In here you find all the data of the project {project.data.name}</h2>
                                 </div>
                             </div>
                         </Fragment>
@@ -144,4 +145,4 @@ function Projects() {
     );
 };
 
-export default Projects;
+export default Project;

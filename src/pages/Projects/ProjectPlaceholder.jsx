@@ -7,7 +7,7 @@ function ProjectPlaceholder({project, user}) {
     const navigate = useNavigate();
     
     return(
-        <div className="projectPlaceholder" onClick={() => navigate(`/project/${project.id}`)}>
+        <div className="projectPlaceholder" onClick={() => navigate(`/project?projectId=${project.id}`)}>
             <div className="projectPlaceholder_left">
                 <h1>{project.name}</h1>
             </div>
