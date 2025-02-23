@@ -8,6 +8,7 @@ import Signin from "./pages/Signin/Signin.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Projects from "./pages/Projects/Projects.jsx";
 import CreateProject from "./pages/CreateProject/CreateProject.jsx";
+import UpdateProject from "./pages/UpdateProject/UpdateProject.jsx";
 import Project from "./pages/Project/Project.jsx";
 import Logout from "./pages/Logout/Logout.jsx";
 import Error from "./pages/Error/Error.jsx";
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/create-project" element={<CreateProject />} />
+                <Route path="/update-project" element={<UpdateProject />} />
                 <Route path="/project" element={<Project />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />

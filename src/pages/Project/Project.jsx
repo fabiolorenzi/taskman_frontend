@@ -72,13 +72,13 @@ function Project() {
                 navigate("/login");
             } else {
                 dispatch(authorize(true));
-                getProjects();
+                getProject();
                 getTeams();
             }
         }
     }, [user]);
 
-    function getProjects() {
+    function getProject() {
         fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}/${projectParams}`, {
             method: "PATCH",
             headers: {
