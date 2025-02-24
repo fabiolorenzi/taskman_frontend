@@ -25,6 +25,11 @@
                 text-align: center;
             }
         }
+        .project_buttons {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
         .project_main {
             display: block;
             width: 100%;

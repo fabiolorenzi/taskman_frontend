@@ -9,6 +9,7 @@ import "./Project.scss";
 import DeleteSection from "./DeleteSection.jsx";
 import ProjectData from "./ProjectData.jsx";
 import TeamData from "./TeamData.jsx";
+import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
 function Project() {
@@ -136,6 +137,20 @@ function Project() {
                             <div className="project_body">
                                 <div className="project_bodyTitle">
                                     <h2>In here you find all the data of the project {project.data.name}</h2>
+                                </div>
+                                <div className="project_buttons">
+                                    <ButtonLink
+                                        destination={"/projects"}
+                                        text="Go back"
+                                        title="Go back"
+                                        isReturn
+                                    />
+                                    <ButtonLink
+                                        destination={`/project-table?projectId=${project.data.id}`}
+                                        text="Table"
+                                        title="Table"
+                                        isGoing
+                                    />
                                 </div>
                                 <div className="project_main">
                                     <ProjectData project={project} user={user} />
