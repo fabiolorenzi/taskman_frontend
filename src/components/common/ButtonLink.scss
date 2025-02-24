@@ -40,3 +40,35 @@
     background-color: $warning-colour;
     transition-duration: 0.3s;
 }
+
+.buttonLink_dis,
+.buttonLink_small_dis {
+    display: block;
+    color: $light-font;
+    font-weight: 600;
+    border: 1px solid $menu-colour;
+    border-radius: 4px;
+    padding: 10px 3px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    opacity: 0.5;
+}
+
+.buttonLink_dis {
+    width: 220px;
+    font-size: $md-font-size;
+}
+
+.buttonLink_small_dis {
+    width: 140px;
+    font-size: $sm-font-size;
+}
+
+.normal_dis {
+    background-color: $menu-colour;
+}
+
+.warning_dis {
+    background-color: $warning-colour;
+}

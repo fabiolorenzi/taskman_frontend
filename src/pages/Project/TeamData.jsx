@@ -39,6 +39,7 @@ function TeamData({project, user, teams}) {
                                         title="Update"
                                         isGoing
                                         isSmall
+                                        isDisabled={user.data.id != project.data.main_user}
                                     />
                                     <ButtonLink
                                         destination={`/delete-team?projectId=${project.data.id}&teamId=${team.id}`}
@@ -46,6 +47,7 @@ function TeamData({project, user, teams}) {
                                         title="Delete"
                                         isReturn
                                         isSmall
+                                        isDisabled={user.data.id != project.data.main_user}
                                     />
                                 </div>
                             </div>
