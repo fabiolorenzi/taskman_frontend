@@ -12,6 +12,7 @@ import Project from "./pages/Project/Project.jsx";
 import UpdateProject from "./pages/UpdateProject/UpdateProject.jsx";
 import CreateTeam from "./pages/CreateTeam/CreateTeam.jsx";
 import UpdateTeam from "./pages/UpdateTeam/UpdateTeam.jsx";
+import DeleteTeam from "./pages/DeleteTeam/DeleteTeam.jsx";
 import Logout from "./pages/Logout/Logout.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Footer from "./components/Footer.jsx";
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/update-project" element={<UpdateProject />} />
                 <Route path="/create-team" element={<CreateTeam />} />
                 <Route path="/update-team" element={<UpdateTeam />} />
+                <Route path="/delete-team" element={<DeleteTeam />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />
             </Routes>

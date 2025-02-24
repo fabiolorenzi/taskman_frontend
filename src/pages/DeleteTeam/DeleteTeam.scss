@@ -1,0 +1,11 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.deleteTeam {
+    @include pages($background-colour);
+}
+
+.deleteTeam_container {
+    @include pageContainer;
+}
