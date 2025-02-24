@@ -5,7 +5,6 @@ import "./TeamData.scss";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 
 function TeamData({project, user, teams}) {
-    console.log(teams.data);
     return(
         <div className="teamData">
             <div className="teamData_title">
@@ -35,14 +34,14 @@ function TeamData({project, user, teams}) {
                                 </div>
                                 <div className="teamData_singleButtons">
                                     <ButtonLink
-                                        destination={`/update-team?projectId=${project.data.id}`}
+                                        destination={`/update-team?projectId=${project.data.id}&teamId=${team.id}`}
                                         text="Update"
                                         title="Update"
                                         isGoing
                                         isSmall
                                     />
                                     <ButtonLink
-                                        destination={`/delete-team?projectId=${project.data.id}`}
+                                        destination={`/delete-team?projectId=${project.data.id}&teamId=${team.id}`}
                                         text="Delete"
                                         title="Delete"
                                         isReturn
