@@ -1,0 +1,11 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.deleteProject {
+    @include pages($background-colour);
+}
+
+.deleteProject_container {
+    @include pageContainer;
+}
