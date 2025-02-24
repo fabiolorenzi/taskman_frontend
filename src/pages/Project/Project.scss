@@ -14,7 +14,6 @@
     .project_body {
         display: block;
         width: 100%;
-        max-width: 800px;
         margin: auto;
         padding: 20px;
         .project_bodyTitle {
@@ -24,6 +23,17 @@
                 color: $darker-font;
                 font-size: $lg-font-size;
                 text-align: center;
+            }
+        }
+        .project_main {
+            display: block;
+            width: 100%;
+            .project_mainLower {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
             }
         }
     }

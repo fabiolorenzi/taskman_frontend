@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import "./Project.scss";
 
+import DeleteSection from "./DeleteSection.jsx";
 import ProjectData from "./ProjectData.jsx";
 import TeamData from "./TeamData.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
@@ -138,7 +139,10 @@ function Project() {
                                 </div>
                                 <div className="project_main">
                                     <ProjectData project={project} user={user} />
-                                    <TeamData project={project} user={user} teams={teams} />
+                                    <div className="project_mainLower">
+                                        <TeamData project={project} user={user} teams={teams} />
+                                        <DeleteSection project={project} user={user} />
+                                    </div>
                                 </div>
                             </div>
                         </Fragment>

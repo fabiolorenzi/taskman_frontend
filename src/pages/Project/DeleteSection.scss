@@ -1,0 +1,48 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.deleteSection {
+    display: block;
+    width: 25%;
+    max-width: 800px;
+    background-color: $special-colour;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    margin-top: 50px;
+    .deleteSection_title {
+        display: block;
+        width: 100%;
+        h1 {
+            color: $darker-font;
+            font-size: $lg-font-size;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 auto 20px;
+        }
+    }
+    .deleteSection_inputs {
+        display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            label {
+                color: $darker-font;
+                font-size: $md-font-size;
+                white-space: nowrap;
+            }
+            input {
+                margin: auto;
+                width: 100%;
+            }
+    }
+    .deleteSection_buttons {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
