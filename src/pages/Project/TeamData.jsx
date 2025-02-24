@@ -29,7 +29,7 @@ function TeamData({project, user, teams}) {
                         return(
                             <div className="teamData_single" key={"team_" + team.id}>
                                 <div className="teamData_singleText">
-                                    <p>Id: {team.id}</p>
+                                    <p>Id: {team.user}</p>
                                     <p>Role: {team.role}</p>
                                 </div>
                                 <div className="teamData_singleButtons">
