@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import "./ProjectTable.scss";
 
+import TableHeader from "./TableHeader.jsx";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
@@ -15,7 +16,7 @@ function ProjectTable() {
     const [project, setProject] = useState();
     const [teams, setTeams] = useState();
     const [iterations, setIterations] = useState();
-    const [selectedIteration, setSelectedIteration] = useState();
+    const [selectedIteration, setSelectedIteration] = useState({});
     const [tasks, setTasks] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [areTasksLoading, setAreTasksLoading] = useState(false);
@@ -188,7 +189,15 @@ function ProjectTable() {
                                     {
                                         iterations.data.length > 0 ?
                                             <Fragment>
-
+                                                <div className="projectTable_table">
+                                                    <TableHeader
+                                                        user={user}
+                                                        project={project}
+                                                        iterations={iterations}
+                                                        selectedIteration={selectedIteration}
+                                                        setSelectedIteration={setSelectedIteration}
+                                                    />
+                                                </div>
                                             </Fragment>
                                         : <h2>You are currently no tasks in this project.</h2>
                                     }

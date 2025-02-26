@@ -1,0 +1,55 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.tableHeader {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $special-colour;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 10px 30px -10px $shadow-colour;
+    margin-top: 50px;
+    .tableHeader_left {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: left;
+        width: 40%;
+        p {
+            color: $darker-font;
+            font-size: $lg-font-size;
+            font-weight: 500;
+            margin: 0;
+            text-align: center;
+        }
+    }
+    .tableHeader_mid {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        select {
+            display: block;
+            width: 100%;
+            margin: 0;
+            option {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+    .tableHeader_right {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+        width: 40%;
+        padding: 10px 0;
+    }
+}
