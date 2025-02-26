@@ -152,6 +152,7 @@ function ProjectTable() {
         if (project && teams && iterations) {
             if (project.data && teams.data && iterations.data) {
                 setIsLoading(false);
+                console.log(iterations.data);
             }
         };
     }, [project, teams, iterations]);
@@ -185,7 +186,7 @@ function ProjectTable() {
                                 </div>
                                 <div className="projectTable_main">
                                     {
-                                        iterations.length > 0 ?
+                                        iterations.data.length > 0 ?
                                             <Fragment>
 
                                             </Fragment>
