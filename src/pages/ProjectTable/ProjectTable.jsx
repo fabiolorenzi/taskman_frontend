@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import "./ProjectTable.scss";
 
 import TableHeader from "./TableHeader.jsx";
+import NewTaskBar from "./NewTaskBar.jsx";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
@@ -153,7 +154,6 @@ function ProjectTable() {
         if (project && teams && iterations) {
             if (project.data && teams.data && iterations.data) {
                 setIsLoading(false);
-                console.log(iterations.data);
             }
         };
     }, [project, teams, iterations]);
@@ -196,6 +196,10 @@ function ProjectTable() {
                                                         iterations={iterations}
                                                         selectedIteration={selectedIteration}
                                                         setSelectedIteration={setSelectedIteration}
+                                                    />
+                                                    <NewTaskBar
+                                                        project={project}
+                                                        selectedIteration={selectedIteration}
                                                     />
                                                 </div>
                                             </Fragment>

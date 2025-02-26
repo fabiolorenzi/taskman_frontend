@@ -7,13 +7,11 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     background-color: $special-colour;
-    margin: 50px auto;
+    margin: 50px auto 0;
     padding: 20px;
     border-radius: 4px 4px 0 0;
     box-shadow: 0 10px 30px -10px $shadow-colour;
-    margin-top: 50px;
     .tableHeader_left {
         display: flex;
         flex-wrap: nowrap;

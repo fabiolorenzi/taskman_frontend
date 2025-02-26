@@ -1,0 +1,19 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.newTaskBar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+    background-color: $dark-menu;
+    .newTaskBar_body {
+        display: flex;
+        justify-content: left;
+        width: 15%;
+        max-width: 200px;
+        padding: 5px 10px;
+        margin-left: 8px;
+    }
+}
