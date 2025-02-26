@@ -16,6 +16,7 @@ import DeleteTeam from "./pages/DeleteTeam/DeleteTeam.jsx";
 import DeleteProject from "./pages/DeleteProject/DeleteProject.jsx";
 import ProjectTable from "./pages/ProjectTable/ProjectTable.jsx";
 import CreateIteration from "./pages/CreateIteration/CreateIteration.jsx";
+import UpdateIteration from "./pages/UpdateIteration/UpdateIteration.jsx";
 import Logout from "./pages/Logout/Logout.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Footer from "./components/Footer.jsx";
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/delete-project" element={<DeleteProject />} />
                 <Route path="/project-table" element={<ProjectTable />} />
                 <Route path="/create-iteration" element={<CreateIteration />} />
+                <Route path="/update-iteration" element={<UpdateIteration />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />
             </Routes>
