@@ -8,14 +8,13 @@ import Button from "../../components/common/Button.jsx";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
 
-import "./CreateTask.scss";
+import "./Task.scss";
 
-function CreateTask() {
+function Task() {
     const [session, setSession] = useState();
     const [user, setUser] = useState();
     const [project, setProject] = useState();
     const [iteration, setIteration] = useState();
-    const [tasks, setTasks] = useState();
     const [teams, setTeams] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [taskData, setTaskData] = useState({
@@ -26,9 +25,11 @@ function CreateTask() {
     const [selectedType, setSelectedType] = useState("");
     const [selectedStatus, setSelectedStatus] = useState("");
     const [selectedUser, setSelectedUser] = useState(0);
+    const [initialTask, setInitialTask] = useState();
     const [result, setResult] = useState();
     const projectParams = new URLSearchParams(window.location.search).get("projectId") || "";
     const iterationParams = new URLSearchParams(window.location.search).get("iterationId") || "";
+    const taskParams = new URLSearchParams(window.location.search).get("taskId") || "";
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -112,21 +113,29 @@ function CreateTask() {
                 navigate("/projects");
             } else {
                 getIteration();
-                getTasks();
+                getTask();
                 getTeams();
             }
         }
     }, [project]);
 
     useEffect(() => {
-        if (iteration && tasks && teams) {
-            if (iteration?.message || tasks?.message || teams?.messagee) {
+        if (iteration && initialTask && teams) {
+            if (iteration?.message || initialTask?.message || teams?.messagee) {
                 navigate(`/project?projectId=${projectParams}`);
             } else {
                 setIsLoading(false);
+                setTaskData({
+                    title: initialTask.data.title,
+                    description: initialTask.data.description,
+                    priority: initialTask.data.priority
+                });
+                setSelectedStatus(initialTask.data.status);
+                setSelectedType(initialTask.data.type);
+                setSelectedUser(initialTask.data.user);
             }
         };
-    }, [iteration, tasks, teams]);
+    }, [iteration, initialTask, teams]);
 
     function getIteration() {
         fetch(`http://127.0.0.1:8000/api/v1/iterations/${session.data.user}/${iterationParams}`, {
@@ -144,8 +153,8 @@ function CreateTask() {
         .catch(err => console.log(err));
     };
 
-    function getTasks() {
-        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}?project=${projectParams}&iteration=${iterationParams}`, {
+    function getTask() {
+        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}/${taskParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -156,7 +165,7 @@ function CreateTask() {
             })
         })
         .then(resp => resp.json())
-        .then(data => setTasks(data))
+        .then(data => setInitialTask(data))
         .catch(err => console.log(err));
     };
 
@@ -204,25 +213,25 @@ function CreateTask() {
     const cancelButton = e => {
         e.preventDefault();
         setTaskData({
-            title: "",
-            description: "",
-            priority: 1
+            title: initialTask.data.title,
+            description: initialTask.data.description,
+            priority: initialTask.data.priority
         });
-        setSelectedStatus("New");
-        setSelectedType("-----");
-        setSelectedUser(0);
+        setSelectedStatus(initialTask.data.status);
+        setSelectedType(initialTask.data.type);
+        setSelectedUser(initialTask.data.user);
     };
 
     const submitButton = e => {
         e.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}`, {
-            method: "POST",
+        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}/${taskParams}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                "number": tasks.data.length + 1,
+                "number": initialTask.data.number,
                 "title": taskData.title,
                 "description": taskData.description,
                 "type": selectedType,
@@ -246,25 +255,25 @@ function CreateTask() {
     useEffect(() => {
         if (result) {
             if (result.data) {
-                alert(`The task N${result.data.number} has been created successfully.`);
+                alert(`The task N${result.data.number} has been updated successfully.`);
                 navigate(`/project-table?projectId=${project.data.id}`);
             }
         }
     }, [result]);
 
     return(
-        <div className="createTask">
+        <div className="task">
             <Helmet>
-                <title>Taskman | Create task</title>
+                <title>Taskman | {initialTask ? "N" + initialTask.data.number : "....."}</title>
             </Helmet>
-            <div className="createTask_container">
+            <div className="task_container">
                 {
                     !isLoading ?
                         <Fragment>
-                            <div className="createTask_title">
-                                <h1>Create task</h1>
+                            <div className="task_title">
+                                <h1>Task</h1>
                             </div>
-                            <div className="createTask_returnLink">
+                            <div className="task_returnLink">
                                 <ButtonLink
                                     destination={`/project-table?projectId=${project.data.id}`}
                                     text="Return back"
@@ -272,8 +281,8 @@ function CreateTask() {
                                     isReturn
                                 />
                             </div>
-                            <div className="createTask_body">
-                                <div className="createTask_inputLineFirst">
+                            <div className="task_body">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="title">Title</label>
                                     <input
                                         type="text"
@@ -283,7 +292,7 @@ function CreateTask() {
                                         autoComplete="off"
                                     />
                                 </div>
-                                <div className="createTask_inputLineFirst">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="description">Description</label>
                                     <textarea
                                         name="description"
@@ -292,7 +301,7 @@ function CreateTask() {
                                         autoComplete="off"
                                     />
                                 </div>
-                                <div className="createTask_inputLineFirst">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="type">Type</label>
                                     <select onChange={handleType}>
                                         <option value="-----">-----</option>
@@ -300,7 +309,7 @@ function CreateTask() {
                                         <option value="bug">Bug</option>
                                     </select>
                                 </div>
-                                <div className="createTask_inputLineFirst">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="priority">Priority</label>
                                     <input
                                         type="number"
@@ -312,7 +321,7 @@ function CreateTask() {
                                         autoComplete="off"
                                     />
                                 </div>
-                                <div className="createTask_inputLineFirst">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="status">Status</label>
                                     <select onChange={handleStatus}>
                                         <option value="new">New</option>
@@ -320,7 +329,7 @@ function CreateTask() {
                                         <option value="finished">Finished</option>
                                     </select>
                                 </div>
-                                <div className="createTask_inputLineFirst">
+                                <div className="task_inputLineFirst">
                                     <label htmlFor="user">user</label>
                                     <select onChange={handleUser}>
                                         <option value={0} key="user_0">0: none</option>
@@ -333,9 +342,9 @@ function CreateTask() {
                                         }
                                     </select>
                                 </div>
-                                <div className="createTask_inputLineThird">
+                                <div className="task_inputLineThird">
                                     <Button func={cancelButton} text="Cancel" isCancel />
-                                    <Button func={submitButton} text="Submit" isSubmit />
+                                    <Button func={submitButton} text="Update" isSubmit />
                                 </div>
                             </div>
                         </Fragment>
@@ -346,4 +355,4 @@ function CreateTask() {
     );
 };
 
-export default CreateTask;
+export default Task;

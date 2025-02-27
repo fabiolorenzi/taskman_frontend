@@ -19,7 +19,7 @@ function TaskPlaceholder({
     return(
         <NavLink
             className={"taskPlaceholder " + statusClass}
-            to={`/task?projectId=${project.data.id}&taskId=${task.id}`}
+            to={`/task?projectId=${project.data.id}&taskId=${task.id}&iterationId=${task.iteration}`}
         >
             <div className="taskPlaceholder_body">
                 <p className="taskPlaceholder_number">N{task.number}</p>
