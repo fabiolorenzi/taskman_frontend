@@ -3,5 +3,67 @@
 @import "../../vars/_fontSizes.scss";
 
 .taskPlaceholder {
-    display: flex;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    transition-duration: 0.3s;
+    border-bottom: 1px solid $darker-font;
+    border-top: 1px solid $darker-font;
+    text-decoration: none;
+    &:hover {
+        opacity: 0.5;
+        transition-duration: 0.3s;
+    }
+    .taskPlaceholder_body {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 95%;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+        align-items: center;
+        p {
+            font-size: $md-font-size;
+            font-weight: 500;
+            padding: 3px 0;
+            text-align: center;
+            text-decoration: none;
+        }
+        .taskPlaceholder_number {
+            width: 10%;
+        }
+        .taskPlaceholder_title {
+            width: 30%;
+        }
+        .taskPlaceholder_type {
+            width: 15%;
+        }
+        .taskPlaceholder_user {
+            width: 30%;
+        }
+        .taskPlaceholder_status {
+            width: 15%;
+        }
+    }
+}
+
+.task_new {
+    background-color: $warning-colour;
+    div p {
+        color: $light-font;
+    }
+}
+
+.task_progress {
+    background-color: $special-colour;
+    div p {
+        color: $darker-font
+    }
+}
+
+.task_finished {
+    background-color: $menu-colour;
+    div p {
+        color: $light-font
+    }
 }

@@ -251,13 +251,6 @@ function CreateTask() {
         }
     }, [result]);
 
-    useEffect(() => {
-        console.log("data: ", taskData);
-        console.log("user: ", selectedUser);
-        console.log("type: ", selectedType);
-        console.log("status: ", selectedStatus);
-    }, [selectedStatus, selectedType, selectedUser, taskData]);
-
     return(
         <div className="createTask">
             <Helmet>

@@ -21,11 +21,13 @@ function TaskPlaceholder({
             className={"taskPlaceholder " + statusClass}
             to={`/task?projectId=${project.data.id}&taskId=${task.id}`}
         >
-            <p className="taskPlaceholder_number">N{task.number}</p>
-            <p className="taskPlaceholder_title">{task.title}</p>
-            <p className="taskPlaceholder_type">Type: {task.type}</p>
-            <p className="taskPlaceholder_user">User: {task.user}</p>
-            <p className="taskPlaceholder_status">Status: {task.status}</p>
+            <div className="taskPlaceholder_body">
+                <p className="taskPlaceholder_number">N{task.number}</p>
+                <p className="taskPlaceholder_title">{task.title}</p>
+                <p className="taskPlaceholder_type">Type: {task.type}</p>
+                <p className="taskPlaceholder_user">User: {task.user}</p>
+                <p className="taskPlaceholder_status">Status: {task.status}</p>
+            </div>
         </NavLink>
     );
 };

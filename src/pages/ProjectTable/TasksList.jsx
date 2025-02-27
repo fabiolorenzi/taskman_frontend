@@ -8,7 +8,8 @@ import Spinner from "../../components/common/Spinner.jsx";
 function TasksList({
     project,
     tasks,
-    areTasksLoading
+    areTasksLoading,
+    iteration
 }) {
     return(
         <div className="tasksList">
@@ -24,7 +25,7 @@ function TasksList({
                                 />
                             );
                         })
-                    : <h2>There are no tasks for this iteration</h2>
+                    : <h2>{iteration == 0 ? "Please select an iteration" : "There are no tasks for this iteration"}</h2>
                 : <Spinner />
             }
         </div>

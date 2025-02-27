@@ -164,6 +164,8 @@ function ProjectTable() {
             if (selectedIteration.id > 0) {
                 setAreTasksLoading(true);
                 getTasks();
+            } else {
+                setTasks();
             }
         };
     }, [selectedIteration]);
@@ -222,6 +224,7 @@ function ProjectTable() {
                                                     <TasksList
                                                         project={project}
                                                         tasks={tasks}
+                                                        iteration={selectedIteration?.id ? selectedIteration?.id : 0}
                                                         areTasksLoading={areTasksLoading}
                                                     />
                                                 </div>
