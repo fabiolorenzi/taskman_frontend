@@ -1,0 +1,11 @@
+@import "../../vars/_pages.scss";
+@import "../../vars/_colours.scss";
+@import "../../vars/_fontSizes.scss";
+
+.deleteTask {
+    @include pages($background-colour);
+}
+
+.deleteTask_container {
+    @include pageContainer;
+}

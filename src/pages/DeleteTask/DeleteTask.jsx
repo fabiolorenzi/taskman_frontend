@@ -4,15 +4,15 @@ import { authorize } from "../../redux/actions/authorize.js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import "./DeleteIteration.scss";
+import "./DeleteTask.scss";
 
 import Spinner from "../../components/common/Spinner.jsx";
 
-function DeleteIteration() {
+function DeleteTask() {
     const [session, setSession] = useState();
     const [user, setUser] = useState();
     const projectParams = new URLSearchParams(window.location.search).get("projectId") || "";
-    const iterationParams = new URLSearchParams(window.location.search).get("iterationId") || "";
+    const taskParams = new URLSearchParams(window.location.search).get("taskId") || "";
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -69,13 +69,13 @@ function DeleteIteration() {
                 navigate("/login");
             } else {
                 dispatch(authorize(true));
-                deleteIteration();
+                deleteTask();
             }
         }
     }, [user]);
 
-    function deleteIteration() {
-        fetch(`http://127.0.0.1:8000/api/v1/iterations/${user.data.id}/${iterationParams}`, {
+    function deleteTask() {
+        fetch(`http://127.0.0.1:8000/api/v1/tasks/${user.data.id}/${taskParams}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -92,22 +92,22 @@ function DeleteIteration() {
             return resp.text().then(text => text ? JSON.parse(text) : {});
         })
         .then(data => {
-            alert("The iteration has been removed correctly.");
+            alert("The task has been removed correctly.");
             navigate(`/project-table?projectId=${projectParams}`);
         })
         .catch(err => console.log(err));
     };
 
     return(
-        <div className="deleteIteration">
+        <div className="deleteTask">
             <Helmet>
-                <title>Taskman | Delete iteration</title>
+                <title>Taskman | Delete task</title>
             </Helmet>
-            <div className="deleteIteration_container">
+            <div className="deleteTask_container">
                 <Spinner />
             </div>
         </div>
     );
 };
 
-export default DeleteIteration;
+export default DeleteTask;

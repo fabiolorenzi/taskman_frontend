@@ -280,6 +280,12 @@ function Task() {
                                     title="Return back"
                                     isReturn
                                 />
+                                <ButtonLink
+                                    destination={`/delete-task?projectId=${project.data.id}&taskId=${initialTask.data.id}`}
+                                    text="Delete task"
+                                    title="Delete task"
+                                    isGoing
+                                />
                             </div>
                             <div className="task_body">
                                 <div className="task_inputLineFirst">

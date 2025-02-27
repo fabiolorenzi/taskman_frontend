@@ -20,6 +20,7 @@ import UpdateIteration from "./pages/UpdateIteration/UpdateIteration.jsx";
 import DeleteIteration from "./pages/DeleteIteration/DeleteIteration.jsx";
 import CreateTask from "./pages/CreateTask/CreateTask.jsx";
 import Task from "./pages/Task/Task.jsx";
+import DeleteTask from "./pages/DeleteTask/DeleteTask.jsx";
 import Logout from "./pages/Logout/Logout.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Footer from "./components/Footer.jsx";
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/delete-iteration" element={<DeleteIteration />} />
                 <Route path="/create-task" element={<CreateTask />} />
                 <Route path="/task" element={<Task />} />
+                <Route path="/delete-task" element={<DeleteTask />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />
             </Routes>
