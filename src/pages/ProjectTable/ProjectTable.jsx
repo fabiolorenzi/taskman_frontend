@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import "./ProjectTable.scss";
 
 import TableHeader from "./TableHeader.jsx";
+import TasksList from "./TasksList.jsx";
 import NewTaskBar from "./NewTaskBar.jsx";
 import ButtonLink from "../../components/common/ButtonLink.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
@@ -158,6 +159,23 @@ function ProjectTable() {
         };
     }, [project, teams, iterations]);
 
+    useEffect(() => {
+        if (selectedIteration) {
+            if (selectedIteration.id > 0) {
+                setAreTasksLoading(true);
+                getTasks();
+            }
+        };
+    }, [selectedIteration]);
+
+    useEffect(() => {
+        if (tasks) {
+            if (tasks.data) {
+                setAreTasksLoading(false);
+            }
+        };
+    }, [tasks]);
+
     return(
         <div className="projectTable">
             <Helmet>
@@ -200,6 +218,11 @@ function ProjectTable() {
                                                     <NewTaskBar
                                                         project={project}
                                                         selectedIteration={selectedIteration}
+                                                    />
+                                                    <TasksList
+                                                        project={project}
+                                                        tasks={tasks}
+                                                        areTasksLoading={areTasksLoading}
                                                     />
                                                 </div>
                                             </Fragment>
