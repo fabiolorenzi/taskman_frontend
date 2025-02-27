@@ -18,6 +18,7 @@ import ProjectTable from "./pages/ProjectTable/ProjectTable.jsx";
 import CreateIteration from "./pages/CreateIteration/CreateIteration.jsx";
 import UpdateIteration from "./pages/UpdateIteration/UpdateIteration.jsx";
 import DeleteIteration from "./pages/DeleteIteration/DeleteIteration.jsx";
+import CreateTask from "./pages/CreateTask/CreateTask.jsx";
 import Logout from "./pages/Logout/Logout.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Footer from "./components/Footer.jsx";
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/create-iteration" element={<CreateIteration />} />
                 <Route path="/update-iteration" element={<UpdateIteration />} />
                 <Route path="/delete-iteration" element={<DeleteIteration />} />
+                <Route path="/create-task" element={<CreateTask />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="*" element={<Error />} />
             </Routes>

@@ -14,8 +14,8 @@ function TasksList({
         <div className="tasksList">
             {
                 !areTasksLoading ?
-                    tasks.data.length > 0 ?
-                        tasks.data.map(t => {
+                    tasks && tasks?.data.length > 0 ?
+                        tasks?.data.map(t => {
                             return(
                                 <TaskPlaceholder
                                     project={project}
