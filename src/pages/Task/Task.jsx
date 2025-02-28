@@ -38,7 +38,7 @@ function Task() {
         if (!localStorage.getItem("passcode")) {
             navigate("/login");
         } else {
-            fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            fetch("https://taskman-backend.hopto.org/api/v1/sessions/single", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function Task() {
                 dispatch(authorize(false));
                 navigate("/login");
             } else {
-                fetch(`http://127.0.0.1:8000/api/v1/users/${session.data.user}/${session.data.user}`, {
+                fetch(`https://taskman-backend.hopto.org/api/v1/users/${session.data.user}/${session.data.user}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function Task() {
     }, [user]);
 
     function getProject() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}/${projectParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/projects/${session.data.user}/${projectParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -138,7 +138,7 @@ function Task() {
     }, [iteration, initialTask, teams]);
 
     function getIteration() {
-        fetch(`http://127.0.0.1:8000/api/v1/iterations/${session.data.user}/${iterationParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/iterations/${session.data.user}/${iterationParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -154,7 +154,7 @@ function Task() {
     };
 
     function getTask() {
-        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}/${taskParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/tasks/${session.data.user}/${taskParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -170,7 +170,7 @@ function Task() {
     };
 
     function getTeams() {
-        fetch(`http://127.0.0.1:8000/api/v1/teams/${session.data.user}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/teams/${session.data.user}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -224,7 +224,7 @@ function Task() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}/${taskParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/tasks/${session.data.user}/${taskParams}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

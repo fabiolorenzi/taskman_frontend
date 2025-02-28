@@ -31,7 +31,7 @@ function ProjectTable() {
         if (!localStorage.getItem("passcode")) {
             navigate("/login");
         } else {
-            fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            fetch("https://taskman-backend.hopto.org/api/v1/sessions/single", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function ProjectTable() {
                 dispatch(authorize(false));
                 navigate("/login");
             } else {
-                fetch(`http://127.0.0.1:8000/api/v1/users/${session.data.user}/${session.data.user}`, {
+                fetch(`https://taskman-backend.hopto.org/api/v1/users/${session.data.user}/${session.data.user}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ function ProjectTable() {
     }, [user]);
 
     function getProject() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}/${projectParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/projects/${session.data.user}/${projectParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -103,7 +103,7 @@ function ProjectTable() {
     };
 
     function getTeams() {
-        fetch(`http://127.0.0.1:8000/api/v1/teams/${session.data.user}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/teams/${session.data.user}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -120,7 +120,7 @@ function ProjectTable() {
     };
 
     function getIterations() {
-        fetch(`http://127.0.0.1:8000/api/v1/iterations/${session.data.user}?project=${projectParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/iterations/${session.data.user}?project=${projectParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -136,7 +136,7 @@ function ProjectTable() {
     };
 
     function getTasks() {
-        fetch(`http://127.0.0.1:8000/api/v1/tasks/${session.data.user}?project=${projectParams}&iteration=${selectedIteration.id}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/tasks/${session.data.user}?project=${projectParams}&iteration=${selectedIteration.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

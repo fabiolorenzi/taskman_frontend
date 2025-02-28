@@ -20,7 +20,7 @@ function DeleteProject() {
         if (!localStorage.getItem("passcode")) {
             navigate("/login");
         } else {
-            fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            fetch("https://taskman-backend.hopto.org/api/v1/sessions/single", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function DeleteProject() {
                 dispatch(authorize(false));
                 navigate("/login");
             } else {
-                fetch(`http://127.0.0.1:8000/api/v1/users/${session.data.user}/${session.data.user}`, {
+                fetch(`https://taskman-backend.hopto.org/api/v1/users/${session.data.user}/${session.data.user}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ function DeleteProject() {
     }, [user]);
 
     function deleteProject() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${user.data.id}/${projectParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/projects/${user.data.id}/${projectParams}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

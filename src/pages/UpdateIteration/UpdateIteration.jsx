@@ -34,7 +34,7 @@ function UpdateIteration() {
         if (!localStorage.getItem("passcode")) {
             navigate("/login");
         } else {
-            fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            fetch("https://taskman-backend.hopto.org/api/v1/sessions/single", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ function UpdateIteration() {
                 dispatch(authorize(false));
                 navigate("/login");
             } else {
-                fetch(`http://127.0.0.1:8000/api/v1/users/${session.data.user}/${session.data.user}`, {
+                fetch(`https://taskman-backend.hopto.org/api/v1/users/${session.data.user}/${session.data.user}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ function UpdateIteration() {
     }, [user]);
 
     function getProject() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}/${projectParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/projects/${session.data.user}/${projectParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -114,7 +114,7 @@ function UpdateIteration() {
     }, [project]);
 
     function getIteration() {
-        fetch(`http://127.0.0.1:8000/api/v1/iterations/${session.data.user}/${iterationParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/iterations/${session.data.user}/${iterationParams}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -158,7 +158,7 @@ function UpdateIteration() {
 
     const submitButton = e => {
         e.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/v1/iterations/${session.data.user}/${iterationParams}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/iterations/${session.data.user}/${iterationParams}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

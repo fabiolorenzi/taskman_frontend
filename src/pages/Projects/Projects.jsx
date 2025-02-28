@@ -23,7 +23,7 @@ function Projects() {
         if (!localStorage.getItem("passcode")) {
             navigate("/login");
         } else {
-            fetch("http://127.0.0.1:8000/api/v1/sessions/single", {
+            fetch("https://taskman-backend.hopto.org/api/v1/sessions/single", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function Projects() {
                 dispatch(authorize(false));
                 navigate("/login");
             } else {
-                fetch(`http://127.0.0.1:8000/api/v1/users/${session.data.user}/${session.data.user}`, {
+                fetch(`https://taskman-backend.hopto.org/api/v1/users/${session.data.user}/${session.data.user}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ function Projects() {
     }, [user]);
 
     function getProjects() {
-        fetch(`http://127.0.0.1:8000/api/v1/projects/${session.data.user}`, {
+        fetch(`https://taskman-backend.hopto.org/api/v1/projects/${session.data.user}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
